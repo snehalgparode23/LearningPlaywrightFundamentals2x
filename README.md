@@ -36,10 +36,23 @@ LearningPlaywrightFundamentals2x/
 │   │   ├── 245_GetByRole_PW.spec.ts
 │   │   ├── 246_PressSeq.spec.ts
 │   │   └── Task_10_Jul.spec.ts
-│   ├── 04_Session_Storage/            # (placeholder)
-│   ├── 05_Allure_Reporting/           # (placeholder)
-│   ├── 06_Multiple_Element_/          # (placeholder)
-│   ├── 07_WebTables/                  # (placeholder)
+│   ├── 04_Session_Storage/            # 2 tests — session persistence
+│   │   ├── 247_SessionStorage.spec.ts
+│   │   └── 249_TestVWODashboard_NoCustomReport.spec.ts
+│   ├── 05_Allure_Reporting/           # 1 test — Allure integration
+│   │   └── 248_TestVWODashboard.spec.ts
+│   ├── 06_Multiple_Element_/          # 2 tests — multi-element handling
+│   │   ├── 250_Multi_Element.spec.ts
+│   │   └── 251_Multi_Element_Direct.spec.ts
+│   ├── 07_WebTables/                  # 8 tests — web table interactions
+│   │   ├── 252_WebTables_Dynamic_Xpath.spec.ts
+│   │   ├── 253_WebTable_Dynamic.spec.ts
+│   │   ├── 254_Filter_PageLoc.spec.ts
+│   │   ├── 255_WebTable_Xapth.spec.ts
+│   │   ├── 256_WebTable_Xapth_Pagination.spec.ts
+│   │   ├── 257_WebTable_Xapth_Pagination.spec.ts
+│   │   ├── 258_WebTable_Xapth_Pagination_Fn.spec.ts
+│   │   └── Task_19_July.spec.ts
 │   ├── 08_Web_Select_Frames_Iframe/   # (placeholder)
 │   ├── 09_Frame_Iframe/               # (placeholder)
 │   ├── 10_Keyboard_Hover_Drag_Drop/   # (placeholder)
@@ -57,12 +70,17 @@ LearningPlaywrightFundamentals2x/
 │   ├── 22_Misc_Concepts/              # (placeholder)
 │   ├── 23_Advance_Framework/          # (placeholder)
 │   └── Projects/                      # (placeholder)
+├── utils/
+│   └── CustomReporter.ts              # Custom TTA HTML reporter
 ├── playwright.config.ts    # Playwright configuration
 ├── package.json            # Node.js dependencies
 ├── package-lock.json       # Locked dependency versions
+├── .env.example            # Environment variable template (VWO creds)
 ├── .gitignore              # Git ignore rules
 ├── test-results/           # Test execution results
-└── playwright-report/      # HTML test reports
+├── playwright-report/      # HTML test reports
+├── tta-report/             # Custom TTA reporter output
+└── allure-results/         # Allure report output
 ```
 
 ## Prerequisites
@@ -121,11 +139,11 @@ The `playwright.config.ts` file configures:
 - **Trace**: `on` (captured every run)
 - **Viewport**: 1920×1080
 - **Retries**: 0 locally, 2 on CI
-- **Reporter**: HTML reporter
+- **Reporter**: Custom TTA reporter (`./utils/CustomReporter.ts`) + line reporter
 
-## Tests (22 spec files)
+## Tests (33 spec files)
 
-The tests follow a **pedagogical progression** across 3 completed modules:
+The tests follow a **pedagogical progression** across 7 completed modules:
 
 ### Module 01 — Basics (2 tests)
 
@@ -162,9 +180,42 @@ The tests follow a **pedagogical progression** across 3 completed modules:
 | `246_PressSeq.spec.ts` | `pressSequentially` with 200ms delay + `goBack()` navigation. |
 | `Task_10_Jul.spec.ts` | Full CURA Healthcare end-to-end booking flow. |
 
+### Module 04 — Session Storage (2 tests)
+
+| File | Description |
+|------|-------------|
+| `247_SessionStorage.spec.ts` | Logs into VWO, saves `storageState` to `user-session.json` using `dotenv` for env-based credentials. |
+| `249_TestVWODashboard_NoCustomReport.spec.ts` | Reuses saved session to access dashboard and settings pages without re-authentication. |
+
+### Module 05 — Allure Reporting (1 test)
+
+| File | Description |
+|------|-------------|
+| `248_TestVWODashboard.spec.ts` | Same session-reuse flow as 249, but with Allure attachments (`testInfo.attach`) for screenshots at each step. Tagged `@P0 @smoke @regression`. |
+
+### Module 06 — Multiple Elements (2 tests)
+
+| File | Description |
+|------|-------------|
+| `250_Multi_Element.spec.ts` | Iterates over multiple matching elements using `allInnerTexts()`, loops through to find and click the target link. |
+| `251_Multi_Element_Direct.spec.ts` | Same flow using `getByTestId` for a more direct locator approach. |
+
+### Module 07 — WebTables (8 tests)
+
+| File | Description |
+|------|-------------|
+| `252_WebTables_Dynamic_Xpath.spec.ts` | Dynamic XPath construction to find Helen Bennett's country from a static table. |
+| `253_WebTable_Dynamic.spec.ts` | Structured table extraction — reads all rows from `webtable1.html` using `nth()` and `allInnerTexts()`. |
+| `254_Filter_PageLoc.spec.ts` | Uses `filter({ hasText })` to locate elements, asserts element count and attribute values. |
+| `255_WebTable_Xapth.spec.ts` | Finds a user row via XPath and clicks its checkbox using `preceding-sibling`. |
+| `256_WebTable_Xapth_Pagination.spec.ts` | Paginated table — loops through pages using `getByTestId('next-page')` until a target name is found. |
+| `257_WebTable_Xapth_Pagination.spec.ts` | Collects all emails across multiple paginated pages by clicking page buttons in sequence. |
+| `258_WebTable_Xapth_Pagination_Fn.spec.ts` | Refactored pagination — reusable `findRowByName()` helper function with early-exit logic. |
+| `Task_19_July.spec.ts` | Assignment — find which country Yoshi belongs to. |
+
 ### Future Modules (placeholders)
 
-Directories `04_Session_Storage` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including WebTables, Frames, Alerts, SVG, Shadow DOM, File Upload/Download, Page Object Model, and more.
+Directories `08_Web_Select_Frames_Iframe` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including Frames, Alerts, SVG, Shadow DOM, File Upload/Download, Page Object Model, and more.
 
 ## Useful Resources
 
