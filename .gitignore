@@ -17,3 +17,6 @@ node_modules/
 
 # IDE / tools
 .commandcode/
+
+# Misc orphan files
+node

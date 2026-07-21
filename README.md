@@ -53,7 +53,7 @@ LearningPlaywrightFundamentals2x/
 │   │   ├── 257_WebTable_Xapth_Pagination.spec.ts
 │   │   ├── 258_WebTable_Xapth_Pagination_Fn.spec.ts
 │   │   └── Task_19_July.spec.ts
-│   ├── 08_Web_Select_Frames_Iframe/   # (placeholder)
+│   ├── 08_Web_Select_Frames_Iframe/   # 4 tests — select, custom dropdown, advance select
 │   ├── 09_Frame_Iframe/               # (placeholder)
 │   ├── 10_Keyboard_Hover_Drag_Drop/   # (placeholder)
 │   ├── 11_JS_Alerts/                  # (placeholder)
@@ -141,9 +141,9 @@ The `playwright.config.ts` file configures:
 - **Retries**: 0 locally, 2 on CI
 - **Reporter**: Custom TTA reporter (`./utils/CustomReporter.ts`) + line reporter
 
-## Tests (33 spec files)
+## Tests (37 spec files)
 
-The tests follow a **pedagogical progression** across 7 completed modules:
+The tests follow a **pedagogical progression** across 8 completed modules:
 
 ### Module 01 — Basics (2 tests)
 
@@ -213,9 +213,18 @@ The tests follow a **pedagogical progression** across 7 completed modules:
 | `258_WebTable_Xapth_Pagination_Fn.spec.ts` | Refactored pagination — reusable `findRowByName()` helper function with early-exit logic. |
 | `Task_19_July.spec.ts` | Assignment — find which country Yoshi belongs to. |
 
+### Module 08 — Select, Frames & Iframe (4 tests)
+
+| File | Description |
+|------|-------------|
+| `259_Select.spec.ts` | Standard HTML `<select>` option using `page.selectOption()`. |
+| `260_Custom_DD_Select.spec.ts` | Custom dropdown — clicks `getByTestId` trigger, picks `getByRole` option. |
+| `261_Advance_Select_Pro.spec.ts` | Advance select — single searchable, multi-chip, creatable, async (city autocomplete). |
+| `Task_20th_July.spec.ts` | Assignment — SpiceJet origin/destination selection using `getByTestId` locators with text fill. |
+
 ### Future Modules (placeholders)
 
-Directories `08_Web_Select_Frames_Iframe` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including Frames, Alerts, SVG, Shadow DOM, File Upload/Download, Page Object Model, and more.
+Directories `09_Frame_Iframe` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including Frames, Alerts, SVG, Shadow DOM, File Upload/Download, Page Object Model, and more.
 
 ## Useful Resources
 
