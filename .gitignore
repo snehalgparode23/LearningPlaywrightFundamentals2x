@@ -20,3 +20,6 @@ node_modules/
 
 # Misc orphan files
 node
+
+# Screenshot artifacts from tests
+*.png
