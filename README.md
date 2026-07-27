@@ -54,10 +54,21 @@ LearningPlaywrightFundamentals2x/
 │   │   ├── 258_WebTable_Xapth_Pagination_Fn.spec.ts
 │   │   └── Task_19_July.spec.ts
 │   ├── 08_Web_Select_Frames_Iframe/   # 4 tests — select, custom dropdown, advance select
-│   ├── 09_Frame_Iframe/               # (placeholder)
-│   ├── 10_Keyboard_Hover_Drag_Drop/   # (placeholder)
-│   ├── 11_JS_Alerts/                  # (placeholder)
-│   ├── 12_Handle_SVG/                 # (placeholder)
+│   ├── 09_Frame_Iframe/               # 3 tests — iframe interactions
+│   │   ├── 262_Iframe.spec.ts
+│   │   ├── 263_frameSet.spec.ts
+│   │   └── 264_Iframe_part2.spec.ts
+│   ├── 10_Keyboard_Hover_Drag_Drop/   # 6 tests — keyboard, hover, drag & drop
+│   │   ├── 265_Keyboard.spec.ts
+│   │   ├── 266_SpiceJet_Hover.spec.ts
+│   │   ├── 267_Drag_Drop.spec.ts
+│   │   ├── 268_Advance_Drag_Drop.spec.ts
+│   │   ├── 269_Context_Menu.spec.ts
+│   │   └── Task_22nd_July.spec.ts
+│   ├── 11_JS_Alerts/                  # 1 test — JS dialogs
+│   │   └── 270_JS.spec.ts
+│   ├── 12_Handle_SVG/                 # 1 test — SVG element handling
+│   │   └── 271_SVG.spec.ts
 │   ├── 13_Shadow_DOM/                 # (placeholder)
 │   ├── 14_FileUpload/                 # (placeholder)
 │   ├── 15_File_Download/              # (placeholder)
@@ -141,9 +152,9 @@ The `playwright.config.ts` file configures:
 - **Retries**: 0 locally, 2 on CI
 - **Reporter**: Custom TTA reporter (`./utils/CustomReporter.ts`) + line reporter
 
-## Tests (37 spec files)
+## Tests (50 spec files)
 
-The tests follow a **pedagogical progression** across 8 completed modules:
+The tests follow a **pedagogical progression** across 12 completed modules:
 
 ### Module 01 — Basics (2 tests)
 
@@ -222,9 +233,40 @@ The tests follow a **pedagogical progression** across 8 completed modules:
 | `261_Advance_Select_Pro.spec.ts` | Advance select — single searchable, multi-chip, creatable, async (city autocomplete). |
 | `Task_20th_July.spec.ts` | Assignment — SpiceJet origin/destination selection using `getByTestId` locators with text fill. |
 
+### Module 09 — Frames & Iframes (3 tests)
+
+| File | Description |
+|------|-------------|
+| `262_Iframe.spec.ts` | Interacts with an iframe on TTA — fills vehicle registration form fields and clicks submit. |
+| `263_frameSet.spec.ts` | Multi-frame page — navigates between `main` and `side` frames, prints all frame attributes. |
+| `264_Iframe_part2.spec.ts` | Nested iframes on SelectorsHub — fills inputs across 3 levels of iframe nesting (`#pact1` > `#pact2` > `#pact3`). |
+
+### Module 10 — Keyboard, Hover & Drag & Drop (6 tests)
+
+| File | Description |
+|------|-------------|
+| `265_Keyboard.spec.ts` | Keyboard events on keycode.info — presses `A`, `ArrowLeft`, `Shift+O`, tests `keyboard.up()`/`down()`. |
+| `266_SpiceJet_Hover.spec.ts` | Hover over SpiceJet's "Add-ons" menu and clicks "FlyEarly" submenu item. |
+| `267_Drag_Drop.spec.ts` | Basic drag & drop on the-internet.herokuapp.com — drags column A onto column B. |
+| `268_Advance_Drag_Drop.spec.ts` | Kanban-style drag & drop on TTA — moves cards between "in-progress" and "review" columns. |
+| `269_Context_Menu.spec.ts` | Right-click context menu on TTA — opens menu, lists all options, clicks "Copy". |
+| `Task_22nd_July.spec.ts` | Assignment — hovers "Add-ons" nav item, clicks "Wifi" submenu, logs all submenu items. |
+
+### Module 11 — JS Alerts (1 test)
+
+| File | Description |
+|------|-------------|
+| `270_JS.spec.ts` | Covers all three JS dialog types: alert (accept), confirm (accept/dismiss), prompt (enter text + accept). Uses `page.on('dialog')` handler pattern. |
+
+### Module 12 — Handle SVG (1 test)
+
+| File | Description |
+|------|-------------|
+| `271_SVG.spec.ts` | Flipkart search via SVG — fills search box, clicks the SVG search button, extracts product titles from results grid. |
+
 ### Future Modules (placeholders)
 
-Directories `09_Frame_Iframe` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including Frames, Alerts, SVG, Shadow DOM, File Upload/Download, Page Object Model, and more.
+Directories `13_Shadow_DOM` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including Shadow DOM, File Upload/Download, Page Object Model, and more.
 
 ## Useful Resources
 
