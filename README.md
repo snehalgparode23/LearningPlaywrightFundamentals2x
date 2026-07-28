@@ -54,6 +54,10 @@ LearningPlaywrightFundamentals2x/
 │   │   ├── 258_WebTable_Xapth_Pagination_Fn.spec.ts
 │   │   └── Task_19_July.spec.ts
 │   ├── 08_Web_Select_Frames_Iframe/   # 4 tests — select, custom dropdown, advance select
+│   │   ├── 259_Select.spec.ts
+│   │   ├── 260_Custom_DD_Select.spec.ts
+│   │   ├── 261_Advance_Select_Pro.spec.ts
+│   │   └── Task_20th_July.spec.ts
 │   ├── 09_Frame_Iframe/               # 3 tests — iframe interactions
 │   │   ├── 262_Iframe.spec.ts
 │   │   ├── 263_frameSet.spec.ts
@@ -67,8 +71,11 @@ LearningPlaywrightFundamentals2x/
 │   │   └── Task_22nd_July.spec.ts
 │   ├── 11_JS_Alerts/                  # 1 test — JS dialogs
 │   │   └── 270_JS.spec.ts
-│   ├── 12_Handle_SVG/                 # 1 test — SVG element handling
-│   │   └── 271_SVG.spec.ts
+│   ├── 12_Handle_SVG/                 # 4 tests — SVG element handling
+│   │   ├── 271_SVG.spec.ts
+│   │   ├── 272_SVG_Practice.spec.ts
+│   │   ├── 273_Advance_SVG.spec.ts
+│   │   └── Task_24th_July.spec.ts
 │   ├── 13_Shadow_DOM/                 # (placeholder)
 │   ├── 14_FileUpload/                 # (placeholder)
 │   ├── 15_File_Download/              # (placeholder)
@@ -152,7 +159,7 @@ The `playwright.config.ts` file configures:
 - **Retries**: 0 locally, 2 on CI
 - **Reporter**: Custom TTA reporter (`./utils/CustomReporter.ts`) + line reporter
 
-## Tests (50 spec files)
+## Tests (53 spec files)
 
 The tests follow a **pedagogical progression** across 12 completed modules:
 
@@ -258,11 +265,14 @@ The tests follow a **pedagogical progression** across 12 completed modules:
 |------|-------------|
 | `270_JS.spec.ts` | Covers all three JS dialog types: alert (accept), confirm (accept/dismiss), prompt (enter text + accept). Uses `page.on('dialog')` handler pattern. |
 
-### Module 12 — Handle SVG (1 test)
+### Module 12 — Handle SVG (4 tests)
 
 | File | Description |
 |------|-------------|
 | `271_SVG.spec.ts` | Flipkart search via SVG — fills search box, clicks the SVG search button, extracts product titles from results grid. |
+| `272_SVG_Practice.spec.ts` | TTA SVG widgets — clicks SVG circle shape, validates output, interacts with bar chart and radio buttons. |
+| `273_Advance_SVG.spec.ts` | India map SVG on simplemaps.com — iterates all state `<path>` elements using XPath with `name()`, clicks a target state. |
+| `Task_24th_July.spec.ts` | Assignment — Flipkart macmini search, extracts all product titles, parses prices, and prints the cheapest one. |
 
 ### Future Modules (placeholders)
 
