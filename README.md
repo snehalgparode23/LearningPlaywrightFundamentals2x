@@ -76,8 +76,11 @@ LearningPlaywrightFundamentals2x/
 │   │   ├── 272_SVG_Practice.spec.ts
 │   │   ├── 273_Advance_SVG.spec.ts
 │   │   └── Task_24th_July.spec.ts
-│   ├── 13_Shadow_DOM/                 # (placeholder)
-│   ├── 14_FileUpload/                 # (placeholder)
+│   ├── 13_Shadow_DOM/                 # 1 test — Shadow DOM interactions
+│   │   └── 274_Shadow_DOM.spec.ts
+│   ├── 14_FileUpload/                 # 2 tests — file upload scenarios
+│   │   ├── 275_File_Upload.spec.ts
+│   │   └── 276_Multiple_File_Upload.spec.ts
 │   ├── 15_File_Download/              # (placeholder)
 │   ├── 16_Scroll_toElement/           # (placeholder)
 │   ├── 17_Expect_Assertions/          # (placeholder)
@@ -159,9 +162,9 @@ The `playwright.config.ts` file configures:
 - **Retries**: 0 locally, 2 on CI
 - **Reporter**: Custom TTA reporter (`./utils/CustomReporter.ts`) + line reporter
 
-## Tests (53 spec files)
+## Tests (56 spec files)
 
-The tests follow a **pedagogical progression** across 12 completed modules:
+The tests follow a **pedagogical progression** across 14 completed modules:
 
 ### Module 01 — Basics (2 tests)
 
@@ -274,9 +277,22 @@ The tests follow a **pedagogical progression** across 12 completed modules:
 | `273_Advance_SVG.spec.ts` | India map SVG on simplemaps.com — iterates all state `<path>` elements using XPath with `name()`, clicks a target state. |
 | `Task_24th_July.spec.ts` | Assignment — Flipkart macmini search, extracts all product titles, parses prices, and prints the cheapest one. |
 
+### Module 13 — Shadow DOM (1 test)
+
+| File | Description |
+|------|-------------|
+| `274_Shadow_DOM.spec.ts` | TTA Shadow DOM page — fills email/password in a shadow card, clicks increment on a counter widget, and fills inputs inside a nested shadow host. |
+
+### Module 14 — File Upload (2 tests)
+
+| File | Description |
+|------|-------------|
+| `275_File_Upload.spec.ts` | Single file upload on the-internet.herokuapp.com — sets input file from `testdata.txt`, submits, verifies "File Uploaded!" heading. |
+| `276_Multiple_File_Upload.spec.ts` | PatternFly multiple file upload — uses `setInputFiles` with name/mimeType/buffer objects for two JPEG files. |
+
 ### Future Modules (placeholders)
 
-Directories `13_Shadow_DOM` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including Shadow DOM, File Upload/Download, Page Object Model, and more.
+Directories `15_File_Download` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including File Download, Page Object Model, and more.
 
 ## Useful Resources
 
