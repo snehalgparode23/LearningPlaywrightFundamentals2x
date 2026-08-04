@@ -1,5 +1,4 @@
 import { test, expect, Locator } from '@playwright/test';
-import path from 'path';
 
 const URL = 'https://www.patternfly.org/components/file-upload/multiple-file-upload/'; // replace with target page
 

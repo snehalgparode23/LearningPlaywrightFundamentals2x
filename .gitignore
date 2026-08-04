@@ -23,3 +23,6 @@ node
 
 # Screenshot artifacts from tests
 *.png
+
+# Test output artifacts (downloads, failure screenshots)
+/out/

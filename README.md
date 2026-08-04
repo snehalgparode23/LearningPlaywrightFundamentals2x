@@ -81,10 +81,24 @@ LearningPlaywrightFundamentals2x/
 │   ├── 14_FileUpload/                 # 2 tests — file upload scenarios
 │   │   ├── 275_File_Upload.spec.ts
 │   │   └── 276_Multiple_File_Upload.spec.ts
-│   ├── 15_File_Download/              # (placeholder)
-│   ├── 16_Scroll_toElement/           # (placeholder)
-│   ├── 17_Expect_Assertions/          # (placeholder)
-│   ├── 18_Test_hooks/                 # (placeholder)
+│   ├── 15_File_Download/              # 1 test — download handling
+│   │   └── 277_File_Download.spec.ts
+│   ├── 16_Scroll_toElement/           # 1 test — scrolling techniques
+│   │   └── 278_ScrollToView.spec.ts
+│   ├── 17_Expect_Assertions/          # 4 tests + cheatsheet — expect assertions
+│   │   ├── 279_Expect.spec.ts
+│   │   ├── 280_Expect.spec.ts
+│   │   ├── 281_Expect.spec.ts
+│   │   ├── 282_Project.spec.ts
+│   │   └── 283_Expect.cheatsheet.md
+│   ├── 18_Test_hooks/                 # 6 tests + 2 references — hooks, groups, priority
+│   │   ├── 284_Test_Hook.spec.ts
+│   │   ├── 285_Chrome_Arg_List.md
+│   │   ├── 286_Test_Hook_Cheatsheet.md
+│   │   ├── 287_Group.spec.ts
+│   │   ├── 288_Befre_After.spec.ts
+│   │   ├── 289_TestDescribe.spec.ts
+│   │   └── 290_TestPriority.spec.ts
 │   ├── 19_Data_Driven_Testing/        # (placeholder)
 │   ├── 20_Page_Object_Model/          # (placeholder)
 │   ├── 21_Fixture/                    # (placeholder)
@@ -162,9 +176,9 @@ The `playwright.config.ts` file configures:
 - **Retries**: 0 locally, 2 on CI
 - **Reporter**: Custom TTA reporter (`./utils/CustomReporter.ts`) + line reporter
 
-## Tests (56 spec files)
+## Tests (67 spec files)
 
-The tests follow a **pedagogical progression** across 14 completed modules:
+The tests follow a **pedagogical progression** across 18 completed modules:
 
 ### Module 01 — Basics (2 tests)
 
@@ -290,9 +304,43 @@ The tests follow a **pedagogical progression** across 14 completed modules:
 | `275_File_Upload.spec.ts` | Single file upload on the-internet.herokuapp.com — sets input file from `testdata.txt`, submits, verifies "File Uploaded!" heading. |
 | `276_Multiple_File_Upload.spec.ts` | PatternFly multiple file upload — uses `setInputFiles` with name/mimeType/buffer objects for two JPEG files. |
 
+### Module 15 — File Download (1 test)
+
+| File | Description |
+|------|-------------|
+| `277_File_Download.spec.ts` | TTA upload-download widget — waits for the `download` event via `Promise.all`, then `saveAs()` into the `out/` directory. |
+
+### Module 16 — Scroll to Element (1 test)
+
+| File | Description |
+|------|-------------|
+| `278_ScrollToView.spec.ts` | TTA scroll page — demonstrates `scrollIntoViewIfNeeded()`, `window.scrollBy()`, `window.scrollTo()`, and `expect.poll()` to wait for a lazy list to grow past its initial item count. |
+
+### Module 17 — Expect Assertions (4 tests)
+
+| File | Description |
+|------|-------------|
+| `279_Expect.spec.ts` | Value assertions — `toBe`, `toBeTruthy`/`toBeFalsy`, `toBeNull`, `toBeGreaterThan`, `toEqual` (including object key-order independence). |
+| `280_Expect.spec.ts` | Locator-based assertions — `toBeVisible`, `toContainText`, `toHaveAttribute`, `toHaveCount` on the TTA multiple-element filter page. |
+| `281_Expect.spec.ts` | Soft assertions & negation — `expect.soft` records failures without stopping, then hard assertions and `.not` checks run after. |
+| `282_Project.spec.ts` | Project assertions — `toBeChecked` (unchecked), `toBeVisible`, `toBeEnabled`, `toHaveTitle`, `toContain` on the TTA practice page. |
+| `283_Expect.cheatsheet.md` | Interview cheatsheet covering every common `expect` assertion — value, locator, page, API response, modifiers (`not`, `soft`, `poll`, `toPass`). |
+
+### Module 18 — Test Hooks (6 tests)
+
+| File | Description |
+|------|-------------|
+| `284_Test_Hook.spec.ts` | Test modifiers — `test.skip(condition)`, `test.slow(condition)`, `test.fixme`, `test.fail()` with browser-conditional examples. |
+| `285_Chrome_Arg_List.md` | Reference of Chromium command-line arguments grouped by purpose — window/display, headless, security, network, permissions, CI stability, plus copy-paste configs. |
+| `286_Test_Hook_Cheatsheet.md` | Test API cheatsheet — `test()` variants, suites, hook order (`beforeAll` → `beforeEach` → … → `afterAll`), fixtures, and `test.info()`. |
+| `287_Group.spec.ts` | `test.step()` — splits a login validation flow into named, reporting-friendly steps. |
+| `288_Befre_After.spec.ts` | Hooks lifecycle — `beforeAll`/`beforeEach`/`afterEach`/`afterAll`, with `afterEach` saving a failure screenshot to `out/` when status differs. |
+| `289_TestDescribe.spec.ts` | `test.describe.serial` — ordered checkout suite vs. standalone parallel tests. |
+| `290_TestPriority.spec.ts` | Test priority — `test.describe.configure({ mode: 'serial' })` and `@p1/@p2/@p3` tags runnable via `--grep @p1`. |
+
 ### Future Modules (placeholders)
 
-Directories `15_File_Download` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including File Download, Page Object Model, and more.
+Directories `19_Data_Driven_Testing` through `23_Advance_Framework` plus `Projects` are set up as placeholders for upcoming topics including Data-Driven Testing, Page Object Model, and more.
 
 ## Useful Resources
 
